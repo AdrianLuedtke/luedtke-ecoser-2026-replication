@@ -16,11 +16,10 @@
 # Output: Revision_tables_final.xlsx (Table 7, Appendix A.4, A.7, A.8)
 #
 # Run from the folder that contains the input file, or set `base_dir`.
-# Robust tables are built with lmtest::coeftest() (HC1), because
-# broom::tidy() on an lm object ignores a vcov argument.
+
 # ==================================================================
 
-# --- Package installation (runs only for packages not yet installed)
+# --- Package installation
 required_packages <- c("readxl", "lmtest", "sandwich", "car",
                        "strucchange", "broom", "writexl")
 missing_packages <- required_packages[!required_packages %in%
@@ -141,7 +140,6 @@ fit5     <- rbind(fit_stats(m, vc_hc1, "Base, HC1"),
                   fit_stats(m, vc_nw,  "Base, Newey-West lag 2"))
 print(tab5_hc1, digits = 4)
 print(fit5, digits = 4)
-# Replication in Python with the corrected record: n = 48, adj. R2 = 0.397,
 # GDP 0.00103 (HC1 p = 0.098), lnOrg -274.7 (p = 0.015), pub. year -6.10 (p < 0.001),
 # population density and farm size insignificant; same five Cook's D exclusions.
 
